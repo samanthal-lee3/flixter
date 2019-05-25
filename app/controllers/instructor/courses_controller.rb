@@ -10,6 +10,10 @@ class Instructor::CoursesController < ApplicationController
       redirect-to instructor_course_path(@course)
     end
 
+    def show
+      @course = Course.find(params[:id])
+    end
+
     private
 
     def course_params
