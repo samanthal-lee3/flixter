@@ -4,9 +4,18 @@
   <h1><%= @course.title %></h1>
 
   <div class ="col-sm-4 col-12">
-    <%= @course.cost %>
+    <span class="badge badge-success">
+      <%= number_to_currency @course.cost %>
+    </span>
+
+  <% if current_user && current_user == @course.user %>
+    <br />
+    <br />
+    <%= link_to 'Administrator', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
+  <% end %>
   </div>
 
+<br />
   <div class ="col-sm-8 col-12">
     <%= @course.description %>
   </div>
