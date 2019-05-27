@@ -2,6 +2,11 @@
 
 <div class = "booyah-box col-10 offset-1">
   <h1 class = "text-center"><%= @course.title %></h1>
+  <br />
+  <div class="text-center">
+    <%= link_to 'Add a new section...', new_instructor_course_section_path(@course), class: 'btn btn-primary btn-large' %>
+  </div>
+  <br />
   <h2 class = "text-center"><%= @course.description %></h2>
   <h3 class = "text-center">$<%= @course.cost %></h3>
 </div>
