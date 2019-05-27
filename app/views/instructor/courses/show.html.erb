@@ -4,6 +4,9 @@
   <h1 class = "text-center"><%= @course.title %></h1>
   <br />
   <div class="text-center">
+  <%= link_to 'Preview as a Student...', course_path(@course), class: 'btn btn-warning' %>
+  <br />
+  <br />
     <%= link_to 'Add a new section...', new_instructor_course_section_path(@course), class: 'btn btn-primary btn-large' %>
   </div>
   <br />
