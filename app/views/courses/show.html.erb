@@ -21,5 +21,18 @@
   <div class ="col-sm-8 col-12">
     <%= @course.description %>
    </div>
+
+<div class ="row">
+  <div class = "col-sm-12">
+    <ul>
+      <% @course.sections.each do |section| %>
+        <li>
+          <%= section.title %>
+        </li>
+      <%end%>
+    </ul>
   </div>
+</div>  
+
+</div>
 </div>
