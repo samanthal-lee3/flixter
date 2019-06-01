@@ -5,19 +5,15 @@
   <br />
 
   <div class = "row text-center">
+  <div class ="col">
+    <%= @course.description %>
+   </div>
     <div class ="col">
      <span class="badge badge-success">
         <%= number_to_currency @course.cost %>
       </span>
     </div>
-    <div class ="col">
-    <% if current_user && current_user == @course.user %>
-      <%= link_to 'Administrator', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
-    <% end %>
-  </div>
-  <div class ="col">
-    <%= @course.description %>
-   </div>
+ 
   </div>
 <br />
 <i><h2 class = "text-center"> Class Sections </h2></i>
@@ -33,6 +29,11 @@
     </ul>
   </div>
 </div>  
+<br />
+<br />
+    <% if current_user && current_user == @course.user %>
+      <%= link_to 'Administrator', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
+    <% end %>
 
 </div>
 </div>
