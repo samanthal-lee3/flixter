@@ -24,3 +24,4 @@ class Instructor::CoursesController < ApplicationController
       params.require(:course).permit(:title, :description, :cost)
     end
 end
+
