@@ -18,19 +18,26 @@
 <br />
 <i><h2 class = "text-center"> Class Sections </h2></i>
 <br />
+
 <div class ="row">
   <div class = "col">
-    <ul>
       <% @course.sections.each do |section| %>
-        <li>
+        <div class="section">
           <%= section.title %>
-        </li>
+          <% section.lessons.each do |lesson| %>
+          <div class ="lesson">
+            <b><%= lesson.title %></b>
+              -
+            <%= lesson.subtitle %>
+          </div>
+          <%end%>
+        </div>
       <%end%>
-    </ul>
-  </div>
-</div>  
+  </div>  
+</div>
 <br />
 <br />
+
     <% if current_user && current_user == @course.user %>
       <%= link_to 'Administrator', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
     <% end %>
