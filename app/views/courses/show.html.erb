@@ -7,6 +7,9 @@
       <%= image_tag @course.avatar.to_s, class: 'img-fluid' %>
     </div>
     <br />
+    <br />
+    <br />
+    <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-primary' %>
       <div class = "row text-center">
         <div class ="col">
           <%= @course.description %>
