@@ -9,7 +9,7 @@
     <br />
     <br />
     <br />
-    <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-primary' %>
+    <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-primary', method: :post %>
       <div class = "row text-center">
         <div class ="col">
           <%= @course.description %>
