@@ -9,11 +9,8 @@ class LessonsController < ApplicationController
   private
 
   def require_authorized_for_current_lesson
-    @user = User.find(params[:id])
-    if @user.enrolled_in?(@course) == false
-      redirect_to course_path, alert: 'You must enroll to view lesson details'
-    else
-      redirect_to lesson_path
+    if !current_user.enrolled_in?(current_lesson.section.course)
+      redirect_to course_path,  alert: 'You must enroll to view lesson details'
     end
   end
 
