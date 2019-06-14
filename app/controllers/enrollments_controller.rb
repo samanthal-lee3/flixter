@@ -15,7 +15,7 @@ def create
   charge = Stripe::Charge.create(
     customer: customer.id,
     amount: @amount,
-    description: 'Rails Stripe Customer',
+    description: 'Flixter Premo Content',
     currency: 'usd'
     )
 
