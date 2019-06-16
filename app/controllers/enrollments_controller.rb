@@ -2,6 +2,7 @@ class EnrollmentsController < ApplicationController
   before_action :authenticate_user!
 
 def create
+  if current_course.premium?
   current_user.enrollments.create(course: current_course)
 
   # Amounts in cents
@@ -18,7 +19,9 @@ def create
     description: 'Flixter Premo Content',
     currency: 'usd'
     )
+end
 
+  current_user.enrollments.create(course: current_course)
   redirect_to course_path(current_course)
   rescue Stripe::CardError => e
     flash[:error] = e.message
