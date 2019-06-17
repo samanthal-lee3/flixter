@@ -3,7 +3,12 @@
   $(function() {
     $(".lessons").sortable({
       update: function( event, ui) {
-        alert("UpdateUrl: " + ui.item.data('update-url') + " Index: " + ui.item.index());
+        $.ajax({
+          type: 'PUT',
+          url: ui.item.data('update-url'),
+          dataType: 'json',
+          data: { lesson: { row_order_position: ui.item.index()}}
+        });
       }
     });
   });
