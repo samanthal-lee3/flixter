@@ -1,5 +1,6 @@
 
 <script>
+
   $(function() {
     $(".lessons").sortable({
       update: function( event, ui) {
@@ -12,6 +13,11 @@
       }
     });
   });
+
+  $(function() {
+    $(".sections").sortable({});
+  });
+
 </script>
 
 <br />
@@ -34,7 +40,7 @@
 
 <h2 class = "text-center"> Course Sections and Lessons </h2>
     <br />
-    <ul>
+    <ul class ="sections">
     <% current_course.sections.rank(:row_order).each do |section| %>
       <li>
         <%= section.title %>
