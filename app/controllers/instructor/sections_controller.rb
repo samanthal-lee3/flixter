@@ -13,6 +13,9 @@ class Instructor::SectionsController < ApplicationController
     redirect_to instructor_course_path(@course)
   end
 
+  def update
+  end
+
   private
 
   def require_authorized_for_current_course

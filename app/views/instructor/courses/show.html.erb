@@ -15,7 +15,11 @@
   });
 
   $(function() {
-    $(".sections").sortable({});
+    $(".sections").sortable({
+      update: function( event, ui ) {
+        alert("SectionId: " + ui.item.data('item-id') + " Index: " + ui.item.index());
+      }
+    });
   });
 
 </script>
@@ -42,7 +46,7 @@
     <br />
     <ul class ="sections">
     <% current_course.sections.rank(:row_order).each do |section| %>
-      <li>
+      <li data-item-id=<%+ section.id %>>
         <%= section.title %>
         <%= link_to 'Add New Lesson', new_instructor_section_lesson_path(section), class: 'float-right btn btn-primary btn-sm' %>
         <ul class ="lessons">
