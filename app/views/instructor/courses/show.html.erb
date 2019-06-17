@@ -3,7 +3,7 @@
   $(function() {
     $(".lessons").sortable({
       update: function( event, ui) {
-        alert(ui.item.index());
+        alert("LessonId: " + ui.item.data('item-id') + " Index: " + ui.item.index());
       }
     });
   });
