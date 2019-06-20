@@ -1,6 +1,14 @@
 
 <script>
 
+
+  $(function() {
+    $('.new-lesson-button').click(function(event) {
+      var lessonUrl = ($(event.target).data('lesson-url') );
+      $('#newLessonForm').attr('action', lessonUrl);
+    });
+  });
+
   $(function() {
     $(".lessons").sortable({
       update: function( event, ui) {
@@ -65,7 +73,7 @@
         <%= section.title %>
       </div>
       <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg float-right" data-toggle="modal" data-target="#newLessonModal">
+<button type="button" class="btn btn-primary btn-lg float-right new-lesson-button" data-toggle="modal" data-target="#newLessonModal" data-lesson-url="<%= instructor_section_lessons_path(section) %>">
   Add a New Lesson
 </button>
 
@@ -133,7 +141,7 @@
         </button>
         <h4 class="modal-title" id="newLessonModal">Add a New Lesson </h4>
       </div>
-        <%= simple_form_for @lesson, url: "#" do |f| %>
+        <%= simple_form_for @lesson, url: "#", html: {id: 'newLessonForm'} do |f| %>
           <div class="modal-body"> 
           <%= f.input :title %>
           <%= f.input :subtitle %>
