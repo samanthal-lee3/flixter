@@ -4,6 +4,7 @@
   $(function() {
     $(".lessons").sortable({
       update: function( event, ui) {
+        console.log(ui.item.index())
         $.ajax({
           type: 'PUT',
           url: ui.item.data('update-url'),
@@ -42,7 +43,12 @@
   <%= link_to 'Preview as a Student...', course_path(current_course), class: 'btn btn-warning' %>
   <br />
   <br />
-    <%= link_to 'Add a new section...', new_instructor_course_section_path(current_course), class: 'btn btn-primary btn-large' %>
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#newSectionModal">
+  Add a new section
+</button>
+
   <br />
   <br />
 </div>
@@ -84,6 +90,30 @@
   <br />
   <h2 class = "text-center"><%= current_course.description %></h2>
   <h3 class = "text-center">$<%= current_course.cost %></h3>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="newSectionModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+        <h4 class="modal-title" id="newSectionModal"> Add New Section </h4>
+      </div>
+      <%= simple_form_for @section, url: instructor_course_sections_path(current_course) do |f| %>
+        <div class="modal-body">
+          <%= f.input :title %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <%= f.submit "Add Section", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+    </div>
+  </div>
 </div>
 
 
