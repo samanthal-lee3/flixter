@@ -10,25 +10,14 @@ Enter any expiration date in the future
 Enter any 3 digit CVC code
 
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Open this app using Heroku:
+https://flixter-samantha-lee.herokuapp.com/
 
-Things you may want to cover:
 
-* Ruby version
+* This application was built using Ruby on Rails, HTML5, CSS, and Javascript
 
-* System dependencies
+* Application uses tools including: Bootstrap, CarrierWave, Stripe secure credit card payments
 
-* Configuration
+* Date Created: June 2019
 
-* Database creation
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
