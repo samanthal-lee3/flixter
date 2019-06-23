@@ -1,37 +1,39 @@
 <div class="booyah-box col-10 offset-1">
   <h1 class = "text-center"><%= @course.title %></h1>
     <br />
+
     <div class = "text-center">
       <%= image_tag @course.avatar.to_s, class: 'img-fluid' %>
-    </div>
     <br />
-    <div class = "text-center">
       <span class="badge badge-success">
         <%= number_to_currency @course.cost %>
       </span>
-      <% if current_user && current_user == @course.user %>
+        <% if current_user && current_user == @course.user %>
+          <br />
+          <br />
+          <%= link_to 'Administrator', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
+        <% end %>
       <br />
       <br />
-        <%= link_to 'Administrator', instructor_course_path(@course), class: 'btn btn-danger btn-large' %>
-      <% end %>
-      <br />
-      <br />
+    </div>
+
     <div class = "row text-center">
       <div class = "col">
       <%= @course.description %>
       </div>
     </div>
+
     <br />
   
     <div class = "col text-center">
       <% if current_user %>
         <% if current_user.enrolled_in?(@course) %>
-        <h3 class = "badge badge-info"> You are Enrolled! </h3>
+          <h3 class = "badge badge-info"> You are Enrolled! </h3>
         <% else %>
           <% if @course.free? %>
             <%= link_to 'Enroll', course_enrollments_path(@course), class: 'btn btn-primary', method: :post %>
-          <% else %>
-            <%= form_tag course_enrollments_path(@course) do %>
+        <% else %>
+          <%= form_tag course_enrollments_path(@course) do %>
           <br />
           <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                   data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
@@ -40,25 +42,24 @@
                   data-amount="<%= (@course.cost * 100).to_i %>"
                   data-locale="auto">
           </script>
-          <% end %>
+        <% end %>
         <% end %>
       <% end %>
-    <% else %>
-      <h3 class = "badge badge-info">Sign In to Enroll!</h3>
-    <% end %>
+      <% else %>
+        <h3 class = "badge badge-info">Sign In to Enroll!</h3>
+      <% end %>
     </div>
+
     <br />
 
-
     <div class = "col-12">
-        <i><h2 class = "text-center"> Class Sections </h2></i>
-
-      <%@course.sections.rank(:row_order).each do |section| %>
-      <br /> <br />
-        <div class="section">
-          <h3><%= section.title %></h3>
-            <div class="row">
-              <% section.lessons.rank(:row_order).each do |lesson| %>
+      <i><h2 class = "text-center"> Class Sections </h2></i>
+        <%@course.sections.rank(:row_order).each do |section| %>
+        <br /> <br />
+          <div class="section">
+            <h3><%= section.title %></h3>
+              <div class="row">
+                <% section.lessons.rank(:row_order).each do |lesson| %>
                   <div class ="col-12 col-sm-6">
                     <div class ="lesson text-center">
                     <br />
@@ -67,15 +68,17 @@
                       <br />
                       <%= lesson.subtitle %>
                     <% end %>
+                    </div>
                   </div>
-                </div>
-              <% end %>
-            </div>
+                <% end %>
+              </div>
           </div>
-        </div>
       <% end %>
     </div>
-    </div>
+
+</div>
+
+
     
 
 
